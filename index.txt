@@ -1,1 +1,2 @@
 smittenkitchen.com/feed/
+daringfireball.net/feeds/main
