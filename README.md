@@ -1,5 +1,5 @@
 # The Chain Guide
-A search engine for bycicle enthusiasts.
+A [search engine](http://thechainguide.net/) for bycicle enthusiasts. Come join me (us, hopefully some day)!
 
 ## Community-Curated Index
 All pages indexed by this search engine are manually added by members of our community. You are welcome to join us! To add a page, simply insert its url in the appropriate index file. There is one index file for each category: techinfo, reviews, stories and products. Currently only the techinfo category is live.
