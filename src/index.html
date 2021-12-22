@@ -14,6 +14,9 @@
             connect() {
                 console.log("Hello, Stimulus!", this.element)
             }
+            greet() {
+                console.log("Hi Bitch!")
+            }
         })
     </script>
 </head>
@@ -21,8 +24,8 @@
     <h1><i>the</i>ChainGuide</h1>
     <p>Find Bycicle-Specific Technical Information, Reviews, Stories and Products</p>
     <div data-controller="hello">
-        <input type="text">
-        <input type="submit", value="Search">
+        <input data-hello-target="name", type="text">
+        <input type="submit", data-action="click->hello#greet", value="Search">
     </div>
     <p>This search index is community-curated. <a href="https://github.com/gkasev/sindie">Come help us!</a></p>
 </body>
