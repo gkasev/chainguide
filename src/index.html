@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>the Chain Guide - Find Bycicle-Specific Technical Information, Reviews, Stroies and Products</title>
+    <script type="module">
+        import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+        window.Stimulus = Application.start()
+
+        Stimulus.register("hello", class extends Controller {
+            static targets = [ "name" ]
+
+            connect() {
+                console.log("Hello, Stimulus!", this.element)
+            }
+        })
+    </script>
+</head>
+<body>
+    <h1><i>the</i>ChainGuide</h1>
+    <p>Find Bycicle-Specific Technical Information, Reviews, Stories and Products</p>
+    <div data-controller="hello">
+        <input type="text">
+        <input type="submit", value="Search">
+    </div>
+    <p>This search index is community-curated. <a href="https://github.com/gkasev/sindie">Come help us!</a></p>
+</body>
+</html>
