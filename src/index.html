@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>the Chain Guide - Find Bycicle-Specific Technical Information, Reviews, Stroies and Products</title>
+    <title>the Chain Guide - Find Bycicle-Specific Technical Information, Reviews, Stories and Products</title>
 
     <script type="module">
         import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
@@ -14,11 +14,22 @@
             static values = { url: String }
 
             getResults () {
-                const params = new URLSearchParams({ q: this.queryTarget.value });
+                const params = new URLSearchParams({ q: this.queryTarget.value })
                 const searchQueryUrl = this.urlValue + params
-                console.log(searchQueryUrl)
+
+                fetch(searchQueryUrl)
+                    .then(response => response.json())
+                    .then(data => data.response.docs)
+                    .then(docs => {
+                        var resultsHTML = ""
+                        docs.forEach((docJSON) => {
+                            resultsHTML += '<a href="http://' + docJSON.url + '">' + docJSON.url + '</a>'
+                            resultsHTML += '<h3>' + docJSON.title + '</h3>'
+                        })
+                        this.resultsTarget.innerHTML = resultsHTML
+                    })
             }
-        })              
+        })
     </script>
 
 </head>
@@ -26,9 +37,10 @@
     <h1><i>the</i>ChainGuide</h1>
     <p>Find Bycicle-Specific Technical Information, Reviews, Stories and Products</p>
     <div data-controller="search"
-         data-search-url-value="http://192.168.86.230/solr/techinfo/query?">
+         data-search-url-value="/solr/techinfo/query?">
         <input type="text", data-search-target="query">
         <input type="submit", data-action="click->search#getResults", value="Search">
+        <p></p>
         <div data-search-target="results"></div>
     </div>
     <p>This search index is community-curated. <a href="https://github.com/gkasev/sindie">Come join me!</a></p>
