@@ -23,7 +23,7 @@
                         //create a key value object of highlights
                         const resultsHighlight = new Map()
                         Object.keys(data.highlighting).forEach(id => {
-                            if (typeof data.highlighting[id].text) {
+                            if (typeof data.highlighting[id].text !== 'undefined') {
                                 resultsHighlight.set(id, data.highlighting[id].text[0])
                             }
                         })
