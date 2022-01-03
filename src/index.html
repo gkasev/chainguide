@@ -23,7 +23,9 @@
                         //create a key value object of highlights
                         const resultsHighlight = new Map()
                         Object.keys(data.highlighting).forEach(id => {
-                            resultsHighlight.set(id, data.highlighting[id].text[0])
+                            if (typeof data.highlighting[id].text) {
+                                resultsHighlight.set(id, data.highlighting[id].text[0])
+                            }
                         })
                         //generate results html
                         var resultsHTML = ""
