@@ -19,16 +19,23 @@
 
                 fetch(searchQueryUrl)
                     .then(response => response.json())
-                    .then(data => data.response.docs)
-                    .then(docs => {
+                    .then(data => {
+                        //create a key value object of highlights
+                        const resultsHighlight = new Map()
+                        Object.keys(data.highlighting).forEach(id => {
+                            console.log(id, data.highlighting[id].text[0])
+                            resultsHighlight.set(id, data.highlighting[id].text[0])
+                        })
+                        //generate results html
                         var resultsHTML = ""
-                        if (docs.length == 0) {
+                        if (data.response.docs.length == 0) {
                             resultsHTML = "No results found"
                         } else {
-                            docs.forEach((doc) => {
-                                resultsHTML += '<a href="http://' + doc.url + '">' + doc.url + '</a>'
+                            data.response.docs.forEach(doc => {
                                 resultsHTML += '<h3>' + doc.title + '</h3>'
-                            })   
+                                resultsHTML += '<a href="http://' + doc.url + '">' + doc.url + '</a>'
+                                resultsHTML += '<p>' + resultsHighlight.get(doc.id) + '</p>'
+                            })
                         }
                         this.resultsTarget.innerHTML = resultsHTML
                     })
