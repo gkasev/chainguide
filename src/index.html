@@ -31,16 +31,6 @@
             }
         })
     </script>
-    <!-- query submission by enter key -->
-    <script>
-        document.getElementById("query-field")
-            .addEventListener("keyup", event => {
-                if (event.keyCode === 13) {
-                    document.getElementById("query-submit").click()
-                }
-            })
-    </script>
-
 </head>
 <body>
     <h1><i>the</i>ChainGuide</h1>
@@ -54,4 +44,13 @@
     </div>
     <p>This search index is community-curated. <a href="https://github.com/gkasev/sindie">Come join me!</a></p>
 </body>
+<!-- query submission by enter key -->
+<script>
+    document.getElementById("query-field")
+        .addEventListener("keyup", event => {
+            if (event.keyCode === 13) {
+                document.getElementById("query-submit").click()
+            }
+        })
+</script>
 </html>
