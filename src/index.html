@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>the Chain Guide - Find Bycicle-Specific Technical Information, Reviews, Stories and Products</title>
-
+    <!-- query submission and results parsing -->
     <script type="module">
         import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
         window.Stimulus = Application.start()
@@ -31,6 +31,15 @@
             }
         })
     </script>
+    <!-- query submission by enter key -->
+    <script>
+        document.getElementById("query-field")
+            .addEventListener("keyup", event => {
+                if (event.keyCode === 13) {
+                    document.getElementById("query-submit").click()
+                }
+            })
+    </script>
 
 </head>
 <body>
@@ -38,8 +47,8 @@
     <p>Find Bycicle-Specific Technical Information, Reviews, Stories and Products</p>
     <div data-controller="search"
          data-search-url-value="/solr/techinfo/query?">
-        <input type="text", data-search-target="query">
-        <input type="submit", data-action="click->search#getResults", value="Search">
+        <input id="query-field", type="text", data-search-target="query">
+        <input id="query-submit", type="submit", data-action="click->search#getResults", value="Search">
         <p></p>
         <div data-search-target="results"></div>
     </div>
