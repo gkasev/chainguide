@@ -22,10 +22,14 @@
                     .then(data => data.response.docs)
                     .then(docs => {
                         var resultsHTML = ""
-                        docs.forEach((docJSON) => {
-                            resultsHTML += '<a href="http://' + docJSON.url + '">' + docJSON.url + '</a>'
-                            resultsHTML += '<h3>' + docJSON.title + '</h3>'
-                        })
+                        if (docs.length == 0) {
+                            resultsHTML = "No results found"
+                        } else {
+                            docs.forEach((doc) => {
+                                resultsHTML += '<a href="http://' + doc.url + '">' + doc.url + '</a>'
+                                resultsHTML += '<h3>' + doc.title + '</h3>'
+                            })   
+                        }
                         this.resultsTarget.innerHTML = resultsHTML
                     })
             }
