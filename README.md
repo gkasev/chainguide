@@ -9,3 +9,6 @@ You can submit pages by email ( add(at)thechainguide.net ) or by creating a pull
 
 ## What to Index
 Submit pages that represent the final destination for the user. For example, submit this specific [product page](https://www.paulcomp.com/shop/components/skewers/quick-release-seat-post-collar/), instead of the intermediate [product category page](https://www.paulcomp.com/product-category/components/skewers/). 
+
+## How to start?
+docker-compose up --build -d

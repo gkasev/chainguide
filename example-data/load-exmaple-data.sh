@@ -15,7 +15,7 @@ docs=""
 while IFS=, read -r title tags url
 do
     formatted_tags=$(format_tags $tags)
-    docs=$docs{\"id\":\"$i\",\"title\":\"$title\",\"tags\":[$formatted_tags],\"url\":\"$url\"},
+    docs=$docs{\"id\":\"$i\",\"title\":\"$title\",\"tags\":[$formatted_tags],\"page-url\":\"$url\"},
     ((i=i+1))
 done < example-data.txt
 
