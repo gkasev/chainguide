@@ -22,11 +22,13 @@
                     .then(data => {
                         //create a key value object of highlights
                         const resultsHighlight = new Map()
-                        Object.keys(data.highlighting).forEach(id => {
-                            if (typeof data.highlighting[id].text !== 'undefined') {
-                                resultsHighlight.set(id, data.highlighting[id].text[0])
-                            }
-                        })
+                        if (typeof data.highlighting !== 'undefined') {
+                            Object.keys(data.highlighting).forEach(id => {
+                                if (typeof data.highlighting[id].text !== 'undefined') {
+                                    resultsHighlight.set(id, data.highlighting[id].text[0])
+                                }
+                            })
+                        }
                         //generate results html
                         var resultsHTML = ""
                         if (data.response.docs.length == 0) {
@@ -34,8 +36,11 @@
                         } else {
                             data.response.docs.forEach(doc => {
                                 resultsHTML += '<h3>' + doc.title + '</h3>'
-                                resultsHTML += '<a href="http://' + doc.url + '">' + doc.url + '</a>'
-                                resultsHTML += '<p>' + resultsHighlight.get(doc.id) + '</p>'
+                                resultsHTML += '<h4>' + doc.tags + '</h4>'
+                                resultsHTML += '<a href="' + doc['page-url'] + '">' + doc['page-url'] + '</a>'
+                                if (typeof resultsHighlight.get(doc.id) !== 'undefined') {
+                                    resultsHTML += '<p>' + resultsHighlight.get(doc.id) + '</p>'
+                                }
                             })
                         }
                         this.resultsTarget.innerHTML = resultsHTML
@@ -48,7 +53,7 @@
     <h1><i>the</i>ChainGuide</h1>
     <p>Find Bycicle-Specific Technical Information, Reviews, Stories and Products</p>
     <div data-controller="search"
-         data-search-url-value="/solr/techinfo/query?">
+         data-search-url-value="/solr/chainguide/query?">
         <input id="query-field", type="text", data-search-target="query">
         <input id="query-submit", type="submit", data-action="click->search#getResults", value="Search">
         <p></p>

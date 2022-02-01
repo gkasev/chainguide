@@ -1,0 +1,8 @@
+Cables,bicycle;cables,https://www.sheldonbrown.com/cables.html
+Chains,chains;bicycle,https://www.sheldonbrown.com/chains.html
+Chains,chains;bicycle,https://www.sheldonbrown.com/chain-wear.html
+Derailer,derailer;adjustment,https://www.sheldonbrown.com/derailer-adjustment.html
+Brakes,brakes;bicycle;disc brakes,https://www.sheldonbrown.com/disc-brakes.html
+Fixies,fixies;bicycle;fixed,https://www.sheldonbrown.com/fixed.html
+Freewheels,freewheels;bicycle,https://www.sheldonbrown.com/freewheels.html
+Gears,gears;bicycle,https://www.sheldonbrown.com/gears.html
